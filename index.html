@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SatVision AI - Satellite Image Classifier</title>
+    <link rel="stylesheet" href="frontend/style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="logo">SatVision AI</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#classify" class="nav-link">Classify</a></li>
+            <li><a href="#explore" class="nav-link">Explore</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="page active">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="SatVision AI">SatVision AI</h1>
+            <p class="subtitle">Advanced Satellite Image Classification powered by Deep Learning</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">🛰️</div>
+                    <div class="stat-label">Satellite Imagery</div>
+                    <div class="stat-desc">Captures Earth from space</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">🧠</div>
+                    <div class="stat-label">Deep Learning</div>
+                    <div class="stat-desc">Analyzes land patterns</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">🌍</div>
+                    <div class="stat-label">Earth Monitoring</div>
+                    <div class="stat-desc">Real-time classification</div>
+                </div>
+            </div>
+            <button class="cta-btn" onclick="navigateTo('classify')">Start Classifying</button>
+        </div>
+        <div class="floating-earth" id="earth-container"></div>
+    </section>
+
+    <section id="classify" class="page">
+        <div class="classify-container">
+            <h2 class="page-title">Upload & Classify Satellite Image</h2>
+            <p class="page-subtitle">Upload a satellite image to classify the land type using AI</p>
+            
+            <div class="upload-zone" id="upload-zone">
+                <input type="file" id="file-input" accept="image/*" hidden>
+                <div class="upload-content">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <p class="upload-text">Drop your satellite image here or click to browse</p>
+                    <span class="file-types">Supports: JPG, PNG, JPEG</span>
+                </div>
+            </div>
+            
+            <div class="preview-section" id="preview-section" style="display:none;">
+                <div class="image-container">
+                    <img id="preview-img" alt="Uploaded satellite image">
+                    <button class="remove-btn" id="remove-btn" title="Remove image">×</button>
+                </div>
+                <div class="image-info">
+                    <p class="image-name" id="image-name"></p>
+                    <p class="image-size" id="image-size"></p>
+                </div>
+                <div class="action-buttons">
+                    <button class="analyze-btn" id="analyze-btn">🔍 Analyze Image</button>
+                </div>
+            </div>
+            
+            <div class="results-section" id="results-section" style="display:none;">
+                <div class="result-card">
+                    <h3>🎯 Classification Result</h3>
+                    <div class="result-label" id="result-label"></div>
+                    <div class="confidence-container">
+                        <p class="confidence-label">Confidence Level:</p>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidence-fill"></div>
+                        </div>
+                        <p class="confidence-text" id="confidence-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="explore" class="page">
+        <div class="explore-container">
+            <h2 class="page-title">Explore Classifications</h2>
+            <div class="globe-viewer" id="globe-viewer"></div>
+            <div class="class-grid">
+                <div class="class-card" data-class="desert">
+                    <div class="class-icon">🏜️</div>
+                    <h3>Desert</h3>
+                    <p>Arid landscapes with minimal vegetation</p>
+                </div>
+                <div class="class-card" data-class="green_area">
+                    <div class="class-icon">🌲</div>
+                    <h3>Green Area</h3>
+                    <p>Forests, parks, and vegetation zones</p>
+                </div>
+                <div class="class-card" data-class="water">
+                    <div class="class-icon">🌊</div>
+                    <h3>Water</h3>
+                    <p>Oceans, lakes, rivers, and water bodies</p>
+                </div>
+                <div class="class-card" data-class="cloudy">
+                    <div class="class-icon">☁️</div>
+                    <h3>Cloudy</h3>
+                    <p>Cloud-covered regions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="frontend/script.js"></script>
+</body>
+</html>
