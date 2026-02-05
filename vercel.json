@@ -1,14 +1,11 @@
 {
-  "functions": {
-    "backend/app.py": {
-      "runtime": "python3.9"
-    }
-  },
-  "routes": [
+  "builds": [
     {
-      "src": "/classify",
-      "dest": "/backend/app.py"
-    },
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
     {
       "src": "/(.*)",
       "dest": "/$1"
